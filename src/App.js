@@ -5,9 +5,9 @@ import Star from './Star/Star.js'
 class App extends Component {
   state = {
     persons: [
-      { name: 'Weigo', age: 25 },
-      { name: 'Penny', age: 21 },
-      { name: 'Glace', age: 29 }
+      {id:1, name: 'Weigo', age: 25 },
+      {id:2, name: 'Penny', age: 21 },
+      {id:3, name: 'Glace', age: 29 }
     ],
     name: '',
     showStar: false,
@@ -32,10 +32,21 @@ class App extends Component {
 
   bindingNameHandler = event => {
     this.setState({
-      persons: [
-        {id: 1, name: 'Weigo', age: 26 },
-        {id: 2, name: 'Penny', age: 22 },
-        {id: 3, name: 'Galce', age: 30 }
+      persons: [{
+          id: 1,
+          name: 'Weigo',
+          age: 26
+        },
+        {
+          id: 2,
+          name: 'Penny',
+          age: 22
+        },
+        {
+          id: 3,
+          name: 'Glace',
+          age: 30
+        }
       ]
     });
   }
@@ -92,7 +103,7 @@ class App extends Component {
             age={person.age} 
             click={this.deleteNameHandler.bind(this, index)} 
             key={person.id}
-            changeName={event => this.changeNameHandler(event, person.id)}
+            changeName={ event => this.changeNameHandler(event, person.id) }
           />)
         }
         <button
