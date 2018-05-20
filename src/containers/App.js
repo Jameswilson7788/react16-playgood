@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Star from './Star/Star.js'
+import Star from '../components/Stars/Star/Star';
+import Stars from '../components/Stars'
 
 class App extends Component {
   state = {
@@ -25,6 +26,7 @@ class App extends Component {
   }
 
   deleteNameHandler = personIndex => {
+    if (this.state.persons[0] === undefined) return;
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1); //remove array;
     this.setState({persons}); 
@@ -70,7 +72,10 @@ class App extends Component {
     persons[personIndex] = person;
     this.setState({persons});
   }
-
+  
+  changeColorHandler = (style) => {
+    this.setState({style});
+  }
 
   render() {
     let superStar = null;
@@ -88,26 +93,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        { this.state.showStar === true ? 
-          <Star 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} 
-          />
-          : null
-        }
-        
-        {
-          this.state.persons.map((person, index) => 
-          <Star 
-            name={person.name} 
-            age={person.age} 
-            click={this.deleteNameHandler.bind(this, index)} 
-            key={person.id}
-            changeName={ event => this.changeNameHandler(event, person.id) }
-          />)
-        }
+        <Stars/>  
+      
         <button
-          onClick={ this.toggleStarHandler.bind(this) }
+          style= {this.state.style}
+          onClick= { this.changeColorHandler.bind(this, {backgroundColor:'red'}) }
         >ToggleStar</button>
       </div>
     );
