@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Star from '../components/Stars/Star/Star';
-import Stars from '../components/Stars'
+import Stars from '../components/Stars/Stars';
+import Video from '../components/Videos/Video';
 
 class App extends Component {
   state = {
@@ -9,6 +10,12 @@ class App extends Component {
       {id:1, name: 'Weigo', age: 25 },
       {id:2, name: 'Penny', age: 21 },
       {id:3, name: 'Glace', age: 29 }
+    ],
+    videoSources: [
+      {
+        type: 'mp4',
+        src: '../Blacked.mp4'
+      }
     ],
     name: '',
     showStar: false,
@@ -92,13 +99,15 @@ class App extends Component {
     }
 
     return (
+      
       <div className="App">
-        <Stars/>  
+        <Stars persons={ this.state.persons }/>  
       
         <button
           style= {this.state.style}
           onClick= { this.changeColorHandler.bind(this, {backgroundColor:'red'}) }
         >ToggleStar</button>
+        <Video width="500" height="500" videoSources={ this.state.videoSources }></Video>
       </div>
     );
   }
