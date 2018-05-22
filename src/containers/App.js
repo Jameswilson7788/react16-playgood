@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Star from '../components/Stars/Star/Star';
 import Stars from '../components/Stars/Stars';
-import Video from '../components/Videos/Video';
+import Videos from '../components/Videos/Videos';
 
 class App extends Component {
   state = {
@@ -107,7 +107,7 @@ class App extends Component {
           style= {this.state.style}
           onClick= { this.changeColorHandler.bind(this, {backgroundColor:'red'}) }
         >ToggleStar</button>
-        <Video width="500" height="500" videoSources={ this.state.videoSources }></Video>
+        <Videos />
       </div>
     );
   }
