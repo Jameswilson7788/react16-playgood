@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Star.css';
 
-const star = props => {
+class Star extends Component {
+  render () {
     return (
-        <div className="Star">
-          <p 
-            onClick={props.click}>
-          {props.name}
-          </p>
-          <p>{props.age}</p>
-          <input type="text" 
-            onChange={ props.changeName } 
-            value= {props.name} 
-          />
-        </div>
+      <div className="Star">
+        <p
+          onClick={this.props.click}
+        >
+          {this.props.name}
+        </p>
+        <p>{this.props.age}</p>
+        <input type="text"
+          onChange={this.props.changeName}
+          value={this.props.name}
+        />
+      </div>
     );
-};
+  }
+}
 
 export default star;
